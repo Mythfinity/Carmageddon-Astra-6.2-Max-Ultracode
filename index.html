@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#151615">
+  <meta name="description" content="Drive the Foundry Loop in Wreck District, a Carmageddon-inspired demolition racer. Beat the clock or wreck all three rivals.">
+  <title>Carmageddon · Wreck District</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preload" href="assets/key-art.webp" as="image">
+</head>
+<body>
+<svg class="icons" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="i-volume" viewBox="0 0 24 24"><path d="M3 9h4l5-4v14l-5-4H3zM16 8a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14"/></symbol>
+  <symbol id="i-muted" viewBox="0 0 24 24"><path d="M3 9h4l5-4v14l-5-4H3zM16 9l6 6m0-6-6 6"/></symbol>
+  <symbol id="i-expand" viewBox="0 0 24 24"><path d="M4 9V4h5m6 0h5v5m0 6v5h-5m-6 0H4v-5"/></symbol>
+  <symbol id="i-pad" viewBox="0 0 24 24"><path d="M7 6h10c2 0 3 1 3.6 3.2l1.4 6c.6 3.4-2.3 4.7-4.3 2.5L15 15H9l-2.7 2.7C4.3 20 1.4 18.6 2 15.2l1.4-6C4 7 5 6 7 6zM7.5 8.7v4.6M5.2 11h4.6m5.7 1.2h.1m2-2.3h.1"/></symbol>
+  <symbol id="i-flag" viewBox="0 0 24 24"><path d="M4 21V3m0 1c6-4 9 4 16 0v10c-7 4-10-4-16 0"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M6 3.5v17l15-8.5z"/></symbol>
+  <symbol id="i-keyboard" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="1.5"/><path d="M5 9h1m2 0h1m2 0h1m2 0h1m2 0h1M5 12h1m2 0h1m2 0h1m2 0h1m2 0h1m-10 3h8"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="m5 5 14 14M19 5 5 19"/></symbol>
+  <symbol id="i-pause" viewBox="0 0 24 24"><path stroke-width="4" d="M8 4v16M16 4v16"/></symbol>
+  <symbol id="i-mark" viewBox="0 0 49 31"><path fill="currentColor" stroke="none" d="M0 28 14 3h8L8 28zm12 0L26 3h8L20 28zm12 0L38 3h8L32 28z"/></symbol>
+</svg>
+<div id="app" data-screen="menu">
+  <header class="mast">
+    <div class="brand"><svg aria-hidden="true"><use href="#i-mark"/></svg><span>CARMAGEDDON</span></div>
+    <div class="tools">
+      <button id="sound" class="tool" aria-label="Mute sound" title="Toggle sound (M)" aria-pressed="true"><svg><use href="#i-volume"/></svg><span>SOUND ON</span></button>
+      <button id="fullscreen" class="tool square" aria-label="Enter fullscreen" title="Toggle fullscreen (F)"><svg><use href="#i-expand"/></svg></button>
+      <button id="pause" class="tool square" hidden aria-label="Pause race" title="Pause (Esc)"><svg><use href="#i-pause"/></svg></button>
+    </div>
+  </header>
+
+  <main id="menu">
+    <section class="hero" aria-labelledby="name">
+      <div class="hero-art"></div><div class="hero-shade"></div>
+      <div class="hero-content">
+        <div class="kicker"><span class="live-dot"></span> ARCADE DEMO</div>
+        <h1 id="name"><span>WRECK</span><em>DISTRICT</em></h1>
+        <p>Beat the clock on the Foundry Loop, or wreck every rival standing in your way.</p>
+        <div class="actions">
+          <button class="primary" id="start"><svg><use href="#i-play"/></svg>START RACE</button>
+          <button class="secondary" id="help"><svg><use href="#i-pad"/></svg>HOW TO PLAY</button>
+        </div>
+      </div>
+      <div class="car-tag"><i></i> <span>NO. 07</span> / INTERCEPTOR</div>
+      <div class="corner tl"></div><div class="corner br"></div>
+    </section>
+    <section class="briefing" aria-label="Race briefing">
+      <div class="panel event">
+        <div class="paneltext"><div class="label"><svg><use href="#i-flag"/></svg> EVENT BRIEF</div><h2>Foundry Loop</h2><p>2 laps <b> / </b> 3 rivals <b> / </b> Industrial circuit</p></div>
+        <div class="blueprint"><svg id="track-drawing" viewBox="0 0 155 100" aria-label="Foundry Loop circuit map"></svg></div>
+      </div>
+      <div class="panel quick">
+        <div class="label"><svg><use href="#i-keyboard"/></svg> DRIVER CONTROLS</div>
+        <div class="shortcuts">
+          <div><span><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd></span><small>Drive</small></div>
+          <div><span><kbd>SHIFT</kbd></span><small>Nitro</small></div>
+          <div><span><kbd>SPACE</kbd></span><small>Handbrake</small></div>
+        </div>
+        <p class="touch-intro">Use the on-screen arrows, pedals, nitro and handbrake.</p>
+      </div>
+    </section>
+  </main>
+
+  <section id="race" hidden aria-label="Race">
+    <canvas id="world" aria-label="Foundry Loop driving arena"></canvas>
+    <div class="race-top">
+      <div class="readout"><small>LAP</small><strong id="lap">1 / 2</strong></div>
+      <div class="readout timer"><small>TIME LEFT</small><strong id="clock">01:00</strong></div>
+      <div class="readout"><small>WRECKS</small><strong id="wrecks">0 / 3</strong></div>
+    </div>
+    <div id="waypoint" aria-hidden="true"><span>➤</span><b>NEXT GATE</b></div>
+    <div id="message" role="status"></div>
+    <div id="count" aria-live="assertive"></div>
+    <div class="race-bottom">
+      <div class="roadbook"><canvas id="map" width="280" height="205" aria-label="Live circuit map"></canvas><div>GATE <b id="gate">01 / 10</b></div></div>
+      <div class="cluster"><div class="speed"><em id="speed">000</em> KM/H</div><div class="gauge"><span>ARMOR</span><i><b id="armor"></b></i></div><div class="gauge nitro"><span>NITRO</span><i><b id="nitro"></b></i></div></div>
+    </div>
+    <div id="touchpad" aria-label="Touch driving controls"><div class="pad-group"><button data-input="left" aria-label="Steer left">◀</button><button data-input="right" aria-label="Steer right">▶</button></div><div class="pad-group pedals"><button data-input="handbrake">DRIFT</button><button data-input="boost">NITRO</button><button data-input="brake">BRAKE</button><button data-input="throttle">GAS</button></div></div>
+  </section>
+
+  <footer><span class="build"><i></i> DEMO BUILD <b>/</b> V1.0</span><span>AN UNOFFICIAL FAN GAME</span></footer>
+</div>
+<dialog id="dialog" aria-labelledby="dialog-title">
+  <div class="dialog-body">
+    <div class="dialog-head"><div class="kicker" id="modal-kicker">DRIVER MANUAL</div><button class="tool square" id="close" aria-label="Close dialog"><svg><use href="#i-close"/></svg></button></div>
+    <h2 id="dialog-title">HOW TO PLAY</h2>
+    <div id="dialog-content"></div>
+    <div class="dialog-actions" id="dialog-actions"></div>
+  </div>
+</dialog>
+<noscript>This game needs JavaScript to run.</noscript>
+<script type="module" src="./game.js"></script>
+</body>
+</html>

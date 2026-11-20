@@ -1,0 +1,15 @@
+{
+  "id": "wreck-district-astra",
+  "title": "Carmageddon",
+  "genre": "Vehicular combat",
+  "summary": "Wreck District: drive the No. 07 Interceptor through two laps of the Foundry Loop or wreck all three rivals before time runs out.",
+  "prompt": "Create demo version of the carmageddon game.\\\n\\\nThen upload to GitHub Mythfinity profile and Smashi.app using my ssh key: ssh -p 22 smashi_a1@188.172.229.244\\\nInclude all details: https\\://smashi.app/docs/\n",
+  "model": "GPT-6.2 Astra",
+  "reasoningEffort": "Ultra",
+  "harness": "Codex",
+  "buildSeconds": 734,
+  "builtAt": "2026-11-20T18:23:26Z",
+  "sourceUrl": "https://github.com/Mythfinity/Carmageddon-Astra-6.2-Max-Ultracode",
+  "entry": "/arcade/wreck-district-astra/",
+  "image": "/arcade/wreck-district-astra/assets/cover.webp"
+}
