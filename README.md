@@ -39,7 +39,7 @@ Open [localhost on port 8000](http://localhost:8000/). The game loads its JavaSc
 
 ## Build credits
 
-- Built with Codex using GPT-6.2 Astra at Ultra reasoning effort. The original prompt, build duration, UTC completion time, and catalog fields are in [the Smashi entry](smashi.json).
+- Built with Codex using GPT-6.2 Astra at Ultra reasoning effort. The game development prompt, build duration, UTC completion time, and catalog fields are in [the Smashi entry](smashi.json).
 - The race simulation is in [sim.js](sim.js). The custom car models, steelworks and chase camera are in [world.js](world.js). [audio.js](audio.js) synthesizes the engine, tire, impact and checkpoint sounds using Web Audio.
 - Original title artwork was created with built-in ImageGen. The [in-game illustration](assets/key-art.webp) and [1280 × 720 arcade cover](assets/cover.webp) are included locally.
 - Three.js is distributed under the [MIT license](assets/licenses/three.txt). Barlow Condensed by Jeremy Tribby uses the [SIL Open Font License](assets/licenses/barlow-condensed.txt).
